@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: This dimension includes all relevant info for products.
+
+    columns:
+
+      - name: product_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: pricebookentry_id
+        description: Pricebook-related foreign key of this table, could be surrogated with productid - as it also must be unique.
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+        tests:
+          - unique
+          - not_null 

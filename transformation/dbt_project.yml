@@ -32,6 +32,10 @@ models:
     staging:
       +schema: staging
       +materialized: view
+    main:
+      +schema: main
+      +materialized: table
+    
 
 vars:
   "dbt_date:time_zone": "Europe/Berlin"

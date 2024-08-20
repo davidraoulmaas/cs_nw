@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_salesforce__pricebook_entry
+    columns:
+
+      - name: grain_id
+        description: Hashing for duplicates
+        tests:
+          - unique
+
+      - name: pricebook_entry_id
+        tests:
+          - unique
+          - not_null
+
+      - name: pricebook2id
+        tests:
+          - not_null 
+
+      - name: product2id 
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_salesforce__product_2')
+              field: product_id
+
+          

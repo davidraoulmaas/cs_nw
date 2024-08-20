@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_account
+    description: This dimension includes all relevant info for accounts.
+
+    columns:
+
+      - name: account_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: account_owner_id
+        description: The responsible user for this account
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 

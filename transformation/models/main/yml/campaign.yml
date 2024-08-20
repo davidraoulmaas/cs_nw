@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_campaign
+    description: This dimension includes attributes for campaigns
+
+    columns:
+
+      - name: campaign_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: campaign_owner_id
+        description: The responsible user for this account
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 
+
+  - name: fct_campaign
+    description: This dimension includes facts for campaigns. Note that incrementeal loading is not yet implemented.
+
+    columns:
+
+      - name: campaign_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null

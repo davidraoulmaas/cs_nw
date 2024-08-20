@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fct_case
+    description: This is the fact table for cases.
+
+    columns:
+
+      - name: case_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: case_account_id
+        description: The responsible account
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 
+
+      - name: case_contact_id
+        description: The responsible account
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 
+
+      - name: case_owner_id
+        description: The responsible user for this case
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 

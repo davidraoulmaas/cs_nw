@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_salesforce__account
+    columns:
+
+      - name: account_id
+        tests:
+          - unique
+          - not_null
+
+      - name: isdeleted
+        tests:
+          - not_null
+          - is_bool #custom generic test
+
+      - name: type
+        tests:
+          - accepted_values:
+              values: ['Customer - Direct', 'Customer - Channel']
+
+      - name: parentid
+        description: Relates to some other salesforces object. However, it doesn't seem to match with anything
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: billingstreet
+        description: If the source is not reliable, we could do a sanity check on all billing relevant fields here. #This could make sense for a lot of other fields. From a master data governance perspective, this test should be running on our final user table.
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - valid_billingstreet
+
+      - name: ownerid
+        description: Should relate to some user. From a master data governance perspective, this test should be running on our final user table.
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('stg_salesforce__user')
+              field: user_id
+          

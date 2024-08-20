@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_salesforce__product_2
+    columns:
+
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+
+          
