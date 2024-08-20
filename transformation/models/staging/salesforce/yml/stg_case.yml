@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_salesforce__case
+    columns:
+
+      - name: case_id
+        tests:
+          - unique
+          - not_null
+
+      - name: isdeleted
+        tests:
+          - not_null
+          - is_bool #custom generic test
+
+      - name: contactid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_salesforce__contact')
+              field: contact_id
+
+      - name: accountid 
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_salesforce__account')
+              field: account_id
+
+      - name: parentid
+        description: Relates to some other salesforces object. However, it doesn't seem to match with anything
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ownerid
+        description: Should relate to some user. From a master data governance perspective, this test should be running on our final user table.
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('stg_salesforce__user')
+              field: user_id
+          
+          

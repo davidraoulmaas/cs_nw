@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: main
+    database: dbt
+    schema: main 
+    tables:
+      - name: dim_product
+      - name: dim_contact
+      - name: dim_account 
+      - name: dim_campaign
+      - name: dim_user
+      - name: fct_case
+      - name: fct_opportunity
+      - name: fct_campaign
+

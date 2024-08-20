@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_salesforce__record_type
+    columns:
+
+      - name: record_type_id
+        tests:
+          - unique
+          - not_null
+
+      - name: isdeleted
+        tests:
+          - not_null
+          - is_bool #custom generic test
+
+          

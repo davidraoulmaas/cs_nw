@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_contact.
+    description: This dimension includes all relevant info for contacts
+
+    columns:
+
+      - name: contact_id
+        description: Primary key of this table     
+        data_type: varchar
+        constraints:
+            - type: not_null
+            - type: unique
+            - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: contact_owner_id
+        description: The responsible user for this contact.
+        data_type: varchar
+        constraints:
+            - type: not_null
+        tests:
+          - not_null 

@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_salesforce__contact
+    columns:
+
+      - name: contact_id
+        tests:
+          - unique
+          - not_null
+
+      - name: isdeleted
+        tests:
+          - not_null
+          - is_bool #custom generic test
+
+      - name: accountid 
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_salesforce__account')
+              field: account_id
+
+      - name: ownerid
+        description: Should relate to some user. From a master data governance perspective, this test should be running on our final user table.
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('stg_salesforce__user')
+              field: user_id
+          

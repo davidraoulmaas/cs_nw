@@ -1,40 +1,30 @@
 # SQL Test dbt Project
 
-Welcome to the sql test repository! This project is based on the [dbt](https://www.getdbt.com/) and uses an embedded [DuckDB](https://duckdb.org/) database with sample Salesforce data.
+## Introduction+
 
-The goal of this test is to evaluate your understanding of SQL, dbt, and dimensional data modeling concepts.
+This is my attempt on the dbt case study. About 6 hours were invested, with no prior operational knowledge on dbt.
 
-## Instructions
+A lot of ideas, enhancements or even duties were left open:
+- [ ] Incremental loading of (at least) campaign facts
+- [ ] Further testing, especially concluding unit tests
+- [ ] Further analysis scripts or other reporting preparation
+- [ ] Further normalization of the tables: cases, opportunities
+- [ ] Completeness of final included fields in all tables
 
-- **Create a public git hub repository**
-- **Commit this folder contents**
-- **Set Up dbt**
-- **Explore Staging Models**
-- **Build Dimension & Fact Models**:  
-   Based on the relevant staging models, create the following:
-   - **Dimension Models**: Identify and create necessary dimension tables. These can be date dimensions, user dimensions, product dimensions, etc. depending on the staging data provided.
-   - **Fact Models**: Build out the fact tables that centralize the measures and keys.
-   
-   Ensure your models are placed in the appropriate directories (e.g., `models/dimensions/` and `models/facts/`).
 
-- **Test Your Models**:  
-   Use dbt's testing functionality to ensure the integrity of your models. Ensure that relationships are correctly established, and there are no data anomalies.
-   ```bash
-   dbt run
-   dbt test
-   ```
+## Walkthrough
 
-- **Commit Your Changes**
-- **Submit Your Test**:  
-   Notify the hiring team by submitting the link to your repository.
+### 1. ERDs
 
-## Evaluation
+1. [Raw ERD](#)
+2. [Main ERD](#)
 
-Your submission will be evaluated based on:
+### 2. DBT Docs
 
-- Correctness of the models.
-- Efficiency and simplicity of the SQL written.
-- Adherence to dbt best practices.
-- Robustness of tests and validations.
+```bash
+dbt docs generate && dbt docs serve
+```
 
-Best of luck, and we look forward to reviewing your models!
+### 3. ...
+
+
